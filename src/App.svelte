@@ -3,12 +3,20 @@
     import template from "./assets/template.jpg";
     import Counter from "./lib/Counter.svelte";
 
-    type Highlight =
+    type CampusHighlight =
         | "bangkhen"
         | "kampangsan"
         | "sriracha"
         | "suphanburi"
         | "sakhonakhon";
+
+    type StatusHighlight = "single" | "taken";
+
+    type LearnHighlight = "onsite" | "online";
+
+    type AccommodationHighlight = "dormitory" | "condo" | "home";
+
+    type TargetHighlight = "straightA" | "party";
 
     enum positionCampus {
         bangkhen = "top-[425px] h-[30px] w-[8rem] left-[20px]",
@@ -18,7 +26,20 @@
         sakhonakhon = "top-[453px] h-[30px] w-[11rem] left-[11.5rem]",
     }
 
-    let campusHighlight: Highlight = "bangkhen";
+    enum status {
+        single = "top-[507px] h-[30px] w-[5rem] left-[115px]",
+        taken = "top-[507px] h-[30px] w-[6rem] left-[1rem]",
+    }
+
+    let campusHighlight: CampusHighlight = "bangkhen";
+
+    let statusHighlight: StatusHighlight = "single";
+
+    let accommodationHighlight: AccommodationHighlight = "dormitory";
+
+    let learnHighlight: LearnHighlight = "online";
+
+    let targetHighlight: TargetHighlight = "straightA";
 
     let isHide = true;
 </script>
@@ -81,14 +102,14 @@
                 />
 
                 <div
-                    on:click={() => campusHighlight = "bangkhen"}
+                    on:click={() => (campusHighlight = "bangkhen")}
                     class={`absolute z-10 ${positionCampus.bangkhen} ${
                         campusHighlight === "bangkhen" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
 
                 <div
-                    on:click={() => campusHighlight = "kampangsan"}
+                    on:click={() => (campusHighlight = "kampangsan")}
                     class={`absolute z-10 ${positionCampus.kampangsan} ${
                         campusHighlight === "kampangsan"
                             ? "bg-yellow-200/50"
@@ -97,7 +118,7 @@
                 />
 
                 <div
-                    on:click={() => campusHighlight = "sakhonakhon"}
+                    on:click={() => (campusHighlight = "sakhonakhon")}
                     class={`absolute z-10 ${positionCampus.sakhonakhon} ${
                         campusHighlight === "sakhonakhon"
                             ? "bg-yellow-200/50"
@@ -106,18 +127,80 @@
                 />
 
                 <div
-                    on:click={() => campusHighlight = "sriracha"}
+                    on:click={() => (campusHighlight = "sriracha")}
                     class={`absolute z-10 ${positionCampus.sriracha} ${
                         campusHighlight === "sriracha" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
 
                 <div
-                    on:click={() => campusHighlight = "suphanburi"}
+                    on:click={() => (campusHighlight = "suphanburi")}
                     class={`absolute z-10 ${positionCampus.suphanburi} ${
                         campusHighlight === "suphanburi"
                             ? "bg-yellow-200/50"
                             : ""
+                    } rounded-xl`}
+                />
+
+                <div
+                    on:click={() => (statusHighlight = "taken")}
+                    class={`absolute z-10 ${status.taken} ${
+                        statusHighlight === "taken" ? "bg-yellow-200/50" : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (statusHighlight = "single")}
+                    class={`absolute z-10 ${status.single} ${
+                        statusHighlight === "single" ? "bg-yellow-200/50" : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (accommodationHighlight = "dormitory")}
+                    class={`absolute z-10 top-[35rem] h-[30px] w-[9rem] left-[1rem] ${
+                        accommodationHighlight === "dormitory"
+                            ? "bg-yellow-200/50"
+                            : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (accommodationHighlight = "condo")}
+                    class={`absolute z-10 top-[35rem] h-[30px] w-[6rem] left-[10.5rem] ${
+                        accommodationHighlight === "condo"
+                            ? "bg-yellow-200/50"
+                            : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (accommodationHighlight = "home")}
+                    class={`absolute z-10 top-[35rem] h-[30px] w-[6rem] left-[16.5rem] ${
+                        accommodationHighlight === "home"
+                            ? "bg-yellow-200/50"
+                            : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (learnHighlight = "online")}
+                    class={`absolute z-10 top-[617px] h-[30px] w-[6rem] left-[1rem] ${
+                        learnHighlight === "online" ? "bg-yellow-200/50" : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (learnHighlight = "onsite")}
+                    class={`absolute z-10 top-[617px] h-[30px] w-[6rem] left-[7.5rem] ${
+                        learnHighlight === "onsite" ? "bg-yellow-200/50" : ""
+                    } rounded-xl`}
+                />
+
+                <div
+                    on:click={() => (targetHighlight = "straightA")}
+                    class={`absolute z-10 top-[671px] h-[30px] w-[8rem] left-[1.5rem] ${
+                        targetHighlight === "straightA" ? "bg-yellow-200/50" : ""
+                    } rounded-xl`}
+                />
+                <div
+                    on:click={() => (targetHighlight = "party")}
+                    class={`absolute z-10 top-[671px] h-[30px] w-[6rem] left-[9rem] ${
+                        targetHighlight === "party" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
             </div>
@@ -128,7 +211,5 @@
 <style>
     .bg-image {
         background-image: url("/template.jpg");
-    }
-    @apply {
     }
 </style>
