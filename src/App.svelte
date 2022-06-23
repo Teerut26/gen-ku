@@ -41,7 +41,11 @@
 
     let targetHighlight: TargetHighlight = "straightA";
 
+    let files: FileList | null = null;
+
     let isHide = true;
+
+    // $: console.log(files)
 </script>
 
 <div
@@ -52,6 +56,18 @@
             <div
                 class="w-[480px] h-[853px] border-2 flex flex-col gap-5 items-center bg-image relative"
             >
+                {#if files}
+                    <div
+                        class="absolute  text-white flex justify-center items-center top-[13.8rem] left-[1.8rem] z-10 border-2 bg w-[11.5rem] h-[11.5rem] bg-green-500 hover:bg-green-600"
+                    >
+                        <img
+                            class="w-[11.5rem] h-[11.5rem] object-cover"
+                            src={URL.createObjectURL(files[0])}
+                            alt="profile"
+                        />
+                    </div>
+                {/if}
+
                 <input
                     class={`absolute top-[149px] right-[41px] bg-transparent ${
                         !isHide
@@ -194,7 +210,9 @@
                 <div
                     on:click={() => (targetHighlight = "straightA")}
                     class={`absolute z-10 top-[671px] h-[30px] w-[8rem] left-[1.5rem] ${
-                        targetHighlight === "straightA" ? "bg-yellow-200/50" : ""
+                        targetHighlight === "straightA"
+                            ? "bg-yellow-200/50"
+                            : ""
                     } rounded-xl`}
                 />
                 <div
@@ -203,6 +221,10 @@
                         targetHighlight === "party" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
+            </div>
+            <div class="flex flex-col gap-2 mt-3">
+                <div>อัพโหลดรูปภาพ</div>
+                <input bind:files type="file" />
             </div>
         </div>
     </div>
