@@ -2,7 +2,10 @@
     import logo from "./assets/svelte.png";
     import template from "./assets/template.jpg";
     import Counter from "./lib/Counter.svelte";
-import Footer from "./lib/Footer.svelte";
+    import Footer from "./lib/Footer.svelte";
+    import { saveAs } from "file-saver";
+    import domtoimage from "dom-to-image";
+    import { copyImageToClipboard } from "copy-image-clipboard";
 
     type CampusHighlight =
         | "bangkhen"
@@ -46,8 +49,41 @@ import Footer from "./lib/Footer.svelte";
 
     let isHide = true;
 
-    // $: console.log(files)
+    let area;
+
+    let saving: boolean = false;
+    let isCopy: boolean = false;
+
+    function downloadImage() {
+        domtoimage
+            .toPng(area)
+            .then(function (blob) {
+                saveAs(blob, `ku-stats.png`);
+            })
+            .catch(function (error) {
+                console.error("oops, something went wrong!", error);
+            });
+    }
+    function copyImage() {
+        saving = true;
+        domtoimage
+            .toPng(area)
+            .then(function (dataUrl) {
+                let img = new Image();
+                img.src = dataUrl;
+                copyImageToClipboard(img.src);
+                saving = false;
+            })
+            .catch(function (error) {
+                console.error("oops, something went wrong!", error);
+            });
+        isCopy = !isCopy;
+        setTimeout(() => {
+            isCopy = !isCopy;
+        }, 5000);
+    }
 </script>
+
 <div class="font-extrabold text-3xl flex justify-center mt-5">KU Stats</div>
 
 <div
@@ -56,7 +92,8 @@ import Footer from "./lib/Footer.svelte";
     <div class="flex flex-col items-center">
         <div class="p-10 bg-white ">
             <div
-                class="w-[480px] h-[853px] border-2 flex flex-col gap-5 items-center bg-image relative"
+                bind:this={area}
+                class="w-[480px] h-[853px] border-2 flex flex-col gap-5 items-center bg-image relative "
             >
                 {#if files}
                     <div
@@ -225,8 +262,24 @@ import Footer from "./lib/Footer.svelte";
                 />
             </div>
             <div class="flex flex-col gap-2 mt-3">
-                <div>อัพโหลดรูปภาพ</div>
-                <input bind:files type="file" />
+                <div class="flex flex-col gap-2 mt-3">
+                    <div>อัพโหลดรูปภาพ</div>
+                    <input bind:files type="file" />
+                </div>
+                <div class="flex flex-col gap-2 mt-3">
+                    <div
+                        on:click={() => downloadImage()}
+                        class="bg-green-700 hover:bg-green-800 px-3 py-2 rounded-xl flex justify-center cursor-pointer select-none text-white font-bold"
+                    >
+                        Download
+                    </div>
+                    <div
+                        on:click={() => copyImage()}
+                        class="bg-green-700 hover:bg-green-800 px-3 py-2 rounded-xl flex justify-center cursor-pointer select-none text-white font-bold"
+                    >
+                        {isCopy ? "Copied" : "Copy"}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
