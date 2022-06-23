@@ -48,6 +48,7 @@ import Footer from "./lib/Footer.svelte";
 
     // $: console.log(files)
 </script>
+<div class="font-extrabold text-3xl flex justify-center mt-5">KU Stats</div>
 
 <div
     class="flex flex-col items-center p-2 gap-3 scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100"
