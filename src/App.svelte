@@ -2,6 +2,7 @@
     import logo from "./assets/svelte.png";
     import template from "./assets/template.jpg";
     import Counter from "./lib/Counter.svelte";
+import Footer from "./lib/Footer.svelte";
 
     type CampusHighlight =
         | "bangkhen"
@@ -229,6 +230,7 @@
         </div>
     </div>
 </div>
+<Footer />
 
 <style>
     .bg-image {
