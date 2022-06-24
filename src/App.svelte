@@ -85,7 +85,7 @@
     }
 </script>
 
-<div class="font-extrabold text-3xl flex justify-center mt-5 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">KU Stats</div>
+<div class="font-extrabold text-3xl flex justify-center mt-5 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">KU Stat</div>
 
 <div
     class="flex flex-col items-center p-2 gap-3 scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100"
