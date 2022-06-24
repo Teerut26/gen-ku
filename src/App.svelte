@@ -12,15 +12,16 @@
         | "kampangsan"
         | "sriracha"
         | "suphanburi"
-        | "sakhonakhon";
+        | "sakhonakhon"
+        | "";
 
-    type StatusHighlight = "single" | "taken";
+    type StatusHighlight = "single" | "taken" | "";
 
-    type LearnHighlight = "onsite" | "online";
+    type LearnHighlight = "onsite" | "online" | "";
 
-    type AccommodationHighlight = "dormitory" | "condo" | "home";
+    type AccommodationHighlight = "dormitory" | "condo" | "home" | "";
 
-    type TargetHighlight = "straightA" | "party";
+    type TargetHighlight = "straightA" | "party" | "";
 
     enum positionCampus {
         bangkhen = "top-[425px] h-[30px] w-[8rem] left-[20px]",
@@ -35,15 +36,15 @@
         taken = "top-[507px] h-[30px] w-[6rem] left-[1rem]",
     }
 
-    let campusHighlight: CampusHighlight = "bangkhen";
+    let campusHighlight: CampusHighlight = "";
 
-    let statusHighlight: StatusHighlight = "single";
+    let statusHighlight: StatusHighlight = "";
 
-    let accommodationHighlight: AccommodationHighlight = "dormitory";
+    let accommodationHighlight: AccommodationHighlight = "";
 
-    let learnHighlight: LearnHighlight = "online";
+    let learnHighlight: LearnHighlight = "";
 
-    let targetHighlight: TargetHighlight = "straightA";
+    let targetHighlight: TargetHighlight = "";
 
     let files: FileList | null = null;
 
@@ -158,14 +159,14 @@
 
                 <div
                     on:click={() => (campusHighlight = "bangkhen")}
-                    class={`absolute z-10 ${positionCampus.bangkhen} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${positionCampus.bangkhen} ${
                         campusHighlight === "bangkhen" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
 
                 <div
                     on:click={() => (campusHighlight = "kampangsan")}
-                    class={`absolute z-10 ${positionCampus.kampangsan} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${positionCampus.kampangsan} ${
                         campusHighlight === "kampangsan"
                             ? "bg-yellow-200/50"
                             : ""
@@ -174,7 +175,7 @@
 
                 <div
                     on:click={() => (campusHighlight = "sakhonakhon")}
-                    class={`absolute z-10 ${positionCampus.sakhonakhon} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${positionCampus.sakhonakhon} ${
                         campusHighlight === "sakhonakhon"
                             ? "bg-yellow-200/50"
                             : ""
@@ -183,14 +184,14 @@
 
                 <div
                     on:click={() => (campusHighlight = "sriracha")}
-                    class={`absolute z-10 ${positionCampus.sriracha} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${positionCampus.sriracha} ${
                         campusHighlight === "sriracha" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
 
                 <div
                     on:click={() => (campusHighlight = "suphanburi")}
-                    class={`absolute z-10 ${positionCampus.suphanburi} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${positionCampus.suphanburi} ${
                         campusHighlight === "suphanburi"
                             ? "bg-yellow-200/50"
                             : ""
@@ -199,19 +200,19 @@
 
                 <div
                     on:click={() => (statusHighlight = "taken")}
-                    class={`absolute z-10 ${status.taken} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${status.taken} ${
                         statusHighlight === "taken" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
                 <div
                     on:click={() => (statusHighlight = "single")}
-                    class={`absolute z-10 ${status.single} ${
+                    class={`absolute hover:bg-green-400/30 z-10 ${status.single} ${
                         statusHighlight === "single" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
                 <div
                     on:click={() => (accommodationHighlight = "dormitory")}
-                    class={`absolute z-10 top-[35rem] h-[30px] w-[9rem] left-[1rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[35rem] h-[30px] w-[9rem] left-[1rem] ${
                         accommodationHighlight === "dormitory"
                             ? "bg-yellow-200/50"
                             : ""
@@ -219,7 +220,7 @@
                 />
                 <div
                     on:click={() => (accommodationHighlight = "condo")}
-                    class={`absolute z-10 top-[35rem] h-[30px] w-[6rem] left-[10.5rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[35rem] h-[30px] w-[6rem] left-[10.5rem] ${
                         accommodationHighlight === "condo"
                             ? "bg-yellow-200/50"
                             : ""
@@ -227,7 +228,7 @@
                 />
                 <div
                     on:click={() => (accommodationHighlight = "home")}
-                    class={`absolute z-10 top-[35rem] h-[30px] w-[6rem] left-[16.5rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[35rem] h-[30px] w-[6rem] left-[16.5rem] ${
                         accommodationHighlight === "home"
                             ? "bg-yellow-200/50"
                             : ""
@@ -235,20 +236,20 @@
                 />
                 <div
                     on:click={() => (learnHighlight = "online")}
-                    class={`absolute z-10 top-[617px] h-[30px] w-[6rem] left-[1rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[617px] h-[30px] w-[6rem] left-[1rem] ${
                         learnHighlight === "online" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
                 <div
                     on:click={() => (learnHighlight = "onsite")}
-                    class={`absolute z-10 top-[617px] h-[30px] w-[6rem] left-[7.5rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[617px] h-[30px] w-[6rem] left-[7.5rem] ${
                         learnHighlight === "onsite" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
 
                 <div
                     on:click={() => (targetHighlight = "straightA")}
-                    class={`absolute z-10 top-[671px] h-[30px] w-[8rem] left-[1.5rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[671px] h-[30px] w-[8rem] left-[1.5rem] ${
                         targetHighlight === "straightA"
                             ? "bg-yellow-200/50"
                             : ""
@@ -256,7 +257,7 @@
                 />
                 <div
                     on:click={() => (targetHighlight = "party")}
-                    class={`absolute z-10 top-[671px] h-[30px] w-[6rem] left-[9rem] ${
+                    class={`absolute hover:bg-green-400/30 z-10 top-[671px] h-[30px] w-[6rem] left-[9rem] ${
                         targetHighlight === "party" ? "bg-yellow-200/50" : ""
                     } rounded-xl`}
                 />
