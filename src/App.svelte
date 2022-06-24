@@ -85,13 +85,13 @@
     }
 </script>
 
-<div class="font-extrabold text-3xl flex justify-center mt-5">KU Stats</div>
+<div class="font-extrabold text-3xl flex justify-center mt-5 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">KU Stats</div>
 
 <div
     class="flex flex-col items-center p-2 gap-3 scale-[0.6] sm:scale-75 md:scale-90 lg:scale-100"
 >
     <div class="flex flex-col items-center">
-        <div class="p-10 bg-white ">
+        <div class="p-10 font-bold text-xl">
             <div
                 bind:this={area}
                 class="w-[480px] h-[853px] border-2 flex flex-col gap-5 items-center bg-image relative "
@@ -109,7 +109,7 @@
                 {/if}
 
                 <input
-                    class={`absolute top-[149px] right-[41px] bg-transparent ${
+                    class={`absolute top-[148px] w-[11rem] right-[45px] bg-transparent ${
                         !isHide
                             ? "border-2 border-purple-500"
                             : "focus:outline-none"
